@@ -56,7 +56,7 @@ if (message.content.startsWith(adminprefix + 'setT')) {
 client.on('guildMemberAdd',async member => {
   const Canvas = require('canvas');
   const jimp = require('jimp');
-  const w = ['./welcome.png'];
+  const w = ['./welcome1.png'];
         let Image = Canvas.Image,
             canvas = new Canvas(800, 300),
             ctx = canvas.getContext('2d');
