@@ -120,14 +120,11 @@ client.on('guildMemberAdd',async member => {
 
 
 
-var dat = JSON.parse("{}");
-function forEachObject(obj, func) {
-    Object.keys(obj).forEach(function (key) { func(key, obj[key]) });
-}
+
 client.on("ready", () => {
     var guild;
     while (!guild)
-        guild = client.guilds.get("432942113697562636");
+        guild = client.guilds.get("331081268731052042");
     guild.fetchInvites().then((data) => {
         data.forEach((Invite, key, map) => {
             var Inv = Invite.code;
