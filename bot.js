@@ -28,7 +28,7 @@ const sql = require("sqlite");
 
 
 
-
+const client = new Discord.Client({ fetchAllMembers: true });
 
 var dat = JSON.parse("{}");
 function forEachObject(obj, func) {
