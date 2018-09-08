@@ -3,6 +3,7 @@ const fs = require('fs');
 const moment = require('moment');
 const jimp = require('jimp');
 const Canvas = require('canvas');
+const client = new Discord.Client({ fetchAllMembers: true });
 
 client.on('guildMemberAdd', member => {
      const welcomer =  member.guild.channels.find('name', 'mysterious');
@@ -62,7 +63,7 @@ welcomer.sendFile(canvas.toBuffer())
 })
       });                    
 });
-const client = new Discord.Client({ fetchAllMembers: true });
+
 
 var dat = JSON.parse("{}");
 function forEachObject(obj, func) {
