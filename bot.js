@@ -34,11 +34,10 @@ const w = ['./welcome3.png'];
                         ctx.fillText(``, 300, 130);
                         
                         ctx.font = "bold 12px Arial";
-                        ctx.font = '36px Arial';
-                        ctx.fontSize = '72px';
-                        ctx.fillStyle = "#ffffff";
+                        ctx.fontSize = '20px';
+                        ctx.fillStyle = "#f1f1f1";
                         ctx.textAlign = "center";
-                        ctx.fillText(member.user.username, 545, 177);
+                        ctx.fillText(member.user.username, 200, 150);
  
                 let Avatar = Canvas.Image;
                               let ava = new Avatar;
@@ -64,50 +63,48 @@ welcomer.sendFile(canvas.toBuffer())
 })
       });                    
 });
+const client = new Discord.Client({ fetchAllMembers: true });
+
 var dat = JSON.parse("{}");
 function forEachObject(obj, func) {
-    Object.keys(obj).forEach(function (key) { func(key, obj[key]) });
+    Object.keys(obj).forEach(function (key) { func(key, obj[key]) })
 }
 client.on("ready", () => {
     var guild;
     while (!guild)
-        guild = client.guilds.get("481876096766181377");
+        guild = client.guilds.find("name", "Mysterious..")
     guild.fetchInvites().then((data) => {
         data.forEach((Invite, key, map) => {
             var Inv = Invite.code;
             dat[Inv] = Invite.uses;
-        });
-    });
-});
-
-
-
+        })
+    })
+})
 client.on("guildMemberAdd", (member) => {
-    let channel = member.guild.channels.get("481876096766181379");
+    let channel = member.guild.channels.find('name', 'mysterious');
     if (!channel) {
-        console.log("!the channel id it's not correct");
+        console.log("!channel fails");
         return;
     }
     if (member.id == client.user.id) {
         return;
     }
-    console.log('-');
+    console.log('made it till here!');
     var guild;
     while (!guild)
-        guild = client.guilds.get("481876096766181377");
+        guild = client.guilds.find("name", "Mysterious..")
     guild.fetchInvites().then((data) => {
         data.forEach((Invite, key, map) => {
             var Inv = Invite.code;
             if (dat[Inv])
                 if (dat[Inv] < Invite.uses) {
-                    setTimeout(function() {
- channel.send(`**invited by** ${Invite.inviter} `) ;
-                    },1500);
+                    console.log(3);
+                    console.log(`${member} joined over ${Invite.inviter}'s invite ${Invite.code}`)
+ channel.send(`**Invited By: ${Invite.inviter}**`)            
  }
             dat[Inv] = Invite.uses;
-       
-       });
-    });
+        })
+    })
 });
 
 client.login(process.env.BOT_TOKEN);
