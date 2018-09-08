@@ -33,11 +33,11 @@ const w = ['./welcome3.png'];
                         ctx.textAlign = "center";
                         ctx.fillText(``, 300, 130);
                         
-                        ctx.font = "bold 12px Arial";
-                        ctx.fontSize = '20px';
-                        ctx.fillStyle = "#f1f1f1";
+                        ctx.font = '16px Arial Bold';
+                        ctx.fontSize = '72px';
+                        ctx.fillStyle = "#ffffff";
                         ctx.textAlign = "center";
-                        ctx.fillText(member.user.username, 250, 150);
+                        ctx.fillText(`${member.guild.memberCount} Members`, 580, 200);
  
                 let Avatar = Canvas.Image;
                               let ava = new Avatar;
